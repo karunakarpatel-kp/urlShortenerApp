@@ -3,6 +3,6 @@ const getShortIdController = require("../controllers/getShortIdController");
 
 const router = express.Router();
 
-router.get("/:shortID", getShortIdController);
+router.get("/api/:shortId", getShortIdController);
 
 module.exports = router;

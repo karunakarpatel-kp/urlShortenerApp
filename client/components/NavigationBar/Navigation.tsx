@@ -92,7 +92,7 @@ const Navigation = () => {
               fontWeight="600"
             >
               <tspan x="0" y="40">
-                Logo Name
+                {/* Made In Love */}
               </tspan>
             </text>
             <text
@@ -104,8 +104,8 @@ const Navigation = () => {
               fontFamily="SegoeUI-Semibold, Segoe UI"
               fontWeight="600"
             >
-              <tspan x="0" y="0">
-                Subname
+              <tspan x="0" y="-20">
+                Subhx infotech
               </tspan>
             </text>
             <path
@@ -283,7 +283,7 @@ const Navigation = () => {
               : "hidden"
           }`}
         >
-          <div className="border-0 border-white text-white   max-w-7xl m-auto pt-14">
+          {/* <div className="border-0 border-white text-white   max-w-7xl m-auto pt-14">
             <div className="kpImage border-0 border-sky-800 flex justify-center">
               <Image src={KarunakarPatelImage} alt="Karunakar Patel Image" className="ring-2  rounded-full" />
             </div>
@@ -291,7 +291,7 @@ const Navigation = () => {
               <h1 className="text-white font-bold text-3xl md:text-4xl">Welcome To VehicleMasti</h1>
               <p className="text-white font-semibold text-xl">A Place where you will learn about Automobiles</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div>
           {/* React Wavify */}

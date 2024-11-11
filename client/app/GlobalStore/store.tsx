@@ -3,19 +3,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import UISlice from "./Slices/UISlice/UISlice";
 import URLShortenerSlice from "./Slices/URLShortenerSlice/URLShortenerSlice";
+import getTotalURLSlice from "./Slices/getTotalURLSlice/getTotalURLSlice";
 
 const store = configureStore({
   reducer: {
-    // One Reducer
-    // loginSlice: loginSlice,
-    // registerSlice: registerSlice,
-    // rzPayOrderSlice: rzPayOrderSlice,
-    // addListingSlice: addListingSlice,
-    // getAllListingSlice: getAllListingSlice,
-    // userDetailSlice: userDetailSlice,
     // UI Slice
     UISlice: UISlice,
     URLShortenerSlice: URLShortenerSlice,
+    getTotalURLSlice: getTotalURLSlice,
   },
 });
 

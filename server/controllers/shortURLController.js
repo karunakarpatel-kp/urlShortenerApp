@@ -5,7 +5,6 @@ const urlModel = require("../models/urlModel");
 
 const shortURLController = asyncHandler(async (req, res, next) => {
   const { url } = req.body;
-  console.log(req.body);
   if (!url) {
     res.status(400);
     logger.error("URL is Required");

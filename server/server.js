@@ -7,6 +7,8 @@ const { errorHandler } = require("./middlewares/errorHandlerMiddleware");
 const shortURLRouter = require("./routes/URLRoute");
 const getShortIdRouter = require("./routes/getShortIDRoute");
 const getURLAnalyticsRouter = require("./routes/getURLAnalytics");
+const getAllURLRouter = require("./routes/getAllURLRoute");
+const deleteURLRouter = require("./routes/deleteURLRoute");
 const connectingToDB = require("./DBConnection/mongooseConnection");
 
 const dotENV = require("dotenv");
@@ -18,16 +20,18 @@ const app = express();
 const PORT = 8000;
 
 // Middlewares Below
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 // Connecting to DB
 connectingToDB();
 
+app.use("/", deleteURLRouter);
+app.use("/", getAllURLRouter);
+app.use("/", getURLAnalyticsRouter);
 app.use("/", shortURLRouter);
 app.use("/", getShortIdRouter);
-app.use("/", getURLAnalyticsRouter);
 
 app.listen(PORT, () => {
   let message = `Server running on PORT: ${PORT}`;

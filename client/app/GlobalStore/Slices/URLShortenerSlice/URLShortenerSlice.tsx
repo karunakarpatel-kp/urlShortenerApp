@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { sendConfetti, sendNotificationToast } from "../UISlice/UISlice";
 
 interface URLShortenerPROPS {
   userEnteredURL: string;
@@ -19,12 +20,11 @@ const initialState: URLShortenerPROPS = {
 
 export const getURLShortenerService = createAsyncThunk("getUserDetailsService", async (incomingObj: any, thunkAPI) => {
   let data = JSON.stringify(incomingObj);
-  console.log(incomingObj, "INCOMING OBJ");
   const config = {
     method: "POST",
-    url: "http://localhost:8000/url",
+    url: "http://localhost:8000/api/url",
     headers: {
-      "Content-Type": "applicaton/json",
+      "Content-Type": "application/json",
     },
     data: data,
   };
@@ -32,9 +32,15 @@ export const getURLShortenerService = createAsyncThunk("getUserDetailsService", 
   try {
     const resP = await axios(config);
     const resPdata = await resP.data;
-    console.log(JSON.stringify(resPdata));
+    thunkAPI.dispatch(
+      sendNotificationToast({ Toast: { message: "Short Url has been created successfully", variant: "success" } })
+    );
+    thunkAPI.dispatch(sendConfetti(true));
     return resPdata;
   } catch (err: any) {
+    thunkAPI.dispatch(
+      sendNotificationToast({ Toast: { message: `Error: ${err.response.message}`, variant: "error" } })
+    );
     return err.response.message;
   }
 });
@@ -47,7 +53,6 @@ const userDetailSlice = createSlice({
       state.userEnteredURL = action.payload;
     },
   },
-
   extraReducers: (builder) => {
     builder.addCase(getURLShortenerService.pending, (state, action) => {
       state.getURLShortenerService.getURLShortenerServiceStatus = "PENDING";
@@ -56,7 +61,7 @@ const userDetailSlice = createSlice({
 
     builder.addCase(getURLShortenerService.fulfilled, (state, action) => {
       state.getURLShortenerService.getURLShortenerServiceStatus = "FULFILLED";
-      state.getURLShortenerService.getURLShortenerServiceStatus = action.payload;
+      state.getURLShortenerService.getURLShortenerServiceData = action.payload;
     });
 
     builder.addCase(getURLShortenerService.rejected, (state, action) => {

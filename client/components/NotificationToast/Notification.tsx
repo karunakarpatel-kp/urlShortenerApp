@@ -1,7 +1,8 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "../../app/GlobalStore/store";
 import { sendNotificationToast } from "../../app/GlobalStore/Slices/UISlice/UISlice";
-import { enqueueSnackbar, SnackbarProvider } from "notistack";
+import { enqueueSnackbar } from "notistack";
+import { SnackbarProvider } from "notistack";
 import { useEffect } from "react";
 
 interface NotificationProps {

@@ -3,6 +3,6 @@ const getURLAnalyticsController = require("../controllers/getURLAnalyticsControl
 
 const router = express.Router();
 
-router.get("/analytics/:shortId", getURLAnalyticsController);
+router.get("/api/analytics/:shortId", getURLAnalyticsController);
 
 module.exports = router;
