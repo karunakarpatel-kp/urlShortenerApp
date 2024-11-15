@@ -27,8 +27,8 @@ app.use(cors());
 // Connecting to DB
 connectingToDB();
 
-app.use("/", deleteURLRouter);
 app.use("/", getAllURLRouter);
+app.use("/", deleteURLRouter);
 app.use("/", getURLAnalyticsRouter);
 app.use("/", shortURLRouter);
 app.use("/", getShortIdRouter);
